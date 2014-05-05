@@ -12,13 +12,14 @@ AudioContext ac;
 int i, offset;
 
 public void setup() {
-
-  size(1000, 1000, P3D);
+  size(1280, 720, P3D);
+  
   ac = new AudioContext();
   cam = new PeasyCam(this, width/2, height/2, -100, 1200);
   cam.setMinimumDistance(100);
   cam.setMaximumDistance(2000);	
-  cam.setRotations(-0.8854452, -0.7244981, 0.4583774);
+  //cam.setRotations(-0.8854452, -0.7244981, 0.4583774);
+  cam.setRotations(0.69178766, 0.18164834, 0.016517702);
 
   double maCenterLat = 40.7245;
   double mapCenterLon = -73.970;
@@ -46,19 +47,9 @@ public void draw() {
     c.display();
     c.sound(noise(frameCount));
   }
-  
-//  if (noise(offset) > (random(1) / frameRate)) {
-//    int i = 0;
-//    for (Chime c: chimeList) {
-//      if (noise(offset + i) < 0.1) {
-//        c.sound(noise(offset + i));
-//        println("sounding " + offset);
-//      }
-//      i++;
-//    }
-//    offset++;
-//  }
 
+  float[] rotations = cam.getRotations();
+  //println("x " + rotations[0] + " y " + rotations[1] + " z " + rotations[2]);
 }
 
 void loadDeaths(String url) {
@@ -80,4 +71,3 @@ void loadDeaths(String url) {
 
   println(chimeList.size());
 }
-
